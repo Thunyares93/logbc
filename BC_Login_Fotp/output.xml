@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.11.0rc2 on darwin)" generated="20240328 10:52:22.158" rpa="false" schemaversion="3">
+<suite id="s1" name="BC Login Fotp" source="/Users/thunyares/Minor/Bonchon_App/BC_Login_Fotp.robot">
+<test id="s1-t1" name="Open Android app" line="32">
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>platformName=${PLATFORM_NAME_ANDROID}</arg>
+<arg>deviceName=${DEVICE_NAME_ANDROID}</arg>
+<arg>appPackage=${appPackage}</arg>
+<arg>newCommandTimeout=${newCommandTimeout}</arg>
+<arg>appActivity=${appActivity}</arg>
+<arg>noReset=${noReset}</arg>
+<arg>automationName=${AUTOMATION_NAME}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |</doc>
+<status status="PASS" starttime="20240328 10:52:22.489" endtime="20240328 10:52:38.323"/>
+</kw>
+<kw name="Reset Application" library="AppiumLibrary">
+<doc>Reset application. Open Application can be reset while Appium session is kept alive.</doc>
+<status status="PASS" starttime="20240328 10:52:38.326" endtime="20240328 10:52:42.286"/>
+</kw>
+<status status="PASS" starttime="20240328 10:52:22.488" endtime="20240328 10:52:42.287"/>
+</test>
+<test id="s1-t2" name="Open App" line="35">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>id=com.android.permissioncontroller:id/permission_allow_foreground_only_button</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20240328 10:52:42.289" endtime="20240328 10:52:43.035"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>id=com.android.permissioncontroller:id/permission_allow_foreground_only_button</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20240328 10:52:43.039" level="INFO">Clicking element 'id=com.android.permissioncontroller:id/permission_allow_foreground_only_button'.</msg>
+<status status="PASS" starttime="20240328 10:52:43.036" endtime="20240328 10:52:43.158"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240328 10:52:45.160" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20240328 10:52:43.158" endtime="20240328 10:52:45.161"/>
+</kw>
+<status status="PASS" starttime="20240328 10:52:42.288" endtime="20240328 10:52:45.162"/>
+</test>
+<test id="s1-t3" name="Tap Login" line="40">
+<kw name="Click Element" library="AppiumLibrary">
+<arg>//android.widget.Button[@content-desc="Log in"]</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20240328 10:52:45.167" level="INFO">Clicking element '//android.widget.Button[@content-desc="Log in"]'.</msg>
+<status status="PASS" starttime="20240328 10:52:45.164" endtime="20240328 10:52:47.353"/>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<arg>What’s your number?</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" starttime="20240328 10:52:47.355" endtime="20240328 10:52:47.491"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>class=android.widget.EditText</arg>
+<arg>${PhoneNumber}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20240328 10:52:47.495" level="INFO">Typing text '0982762594' into text field 'class=android.widget.EditText'</msg>
+<status status="PASS" starttime="20240328 10:52:47.492" endtime="20240328 10:52:47.562"/>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<arg>Enter the OTP</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" starttime="20240328 10:52:47.563" endtime="20240328 10:52:49.469"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>Class=android.widget.EditText</arg>
+<arg>334422</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20240328 10:52:49.471" level="INFO">Typing text '334422' into text field 'Class=android.widget.EditText'</msg>
+<status status="PASS" starttime="20240328 10:52:49.469" endtime="20240328 10:52:49.531"/>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<arg>Incorrect OTP</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" starttime="20240328 10:52:49.531" endtime="20240328 10:52:50.326"/>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<arg>Try again or get a new code when time is up.</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until `text` appears on current page.</doc>
+<status status="PASS" starttime="20240328 10:52:50.326" endtime="20240328 10:52:50.349"/>
+</kw>
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20240328 10:52:50.350" endtime="20240328 10:52:50.656"/>
+</kw>
+<status status="PASS" starttime="20240328 10:52:45.163" endtime="20240328 10:52:50.656"/>
+</test>
+<status status="PASS" starttime="20240328 10:52:22.160" endtime="20240328 10:52:50.658"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="BC Login Fotp">BC Login Fotp</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
